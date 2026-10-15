@@ -1,11 +1,16 @@
 import { profile } from '../data/profile'
+import Reveal from './Reveal'
 
 function Skills() {
   return (
     <section id="skills">
-      <h2>Skills</h2>
-      {profile.skills.map((g) => (
-        <div key={g.group} className="skill-group">
+      <Reveal as="h2">Skills</Reveal>
+      {profile.skills.map((g, i) => (
+        <Reveal
+          key={g.group}
+          className="skill-group"
+          delay={Math.min(i + 1, 4) * 80}
+        >
           <h3>{g.group}</h3>
           <p>
             {g.items.map((item) => (
@@ -14,7 +19,7 @@ function Skills() {
               </span>
             ))}
           </p>
-        </div>
+        </Reveal>
       ))}
     </section>
   )

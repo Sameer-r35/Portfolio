@@ -1,12 +1,18 @@
 import { projects } from '../data/projects'
+import Reveal from './Reveal'
 
 function Projects() {
   return (
     <section id="projects">
-      <h2>Projects</h2>
+      <Reveal as="h2">Projects</Reveal>
       <div className="project-grid">
-        {projects.map((p) => (
-          <article key={p.id} className="project-card">
+        {projects.map((p, i) => (
+          <Reveal
+            key={p.id}
+            as="article"
+            className="project-card"
+            delay={Math.min(i, 4) * 80}
+          >
             <p className="eyebrow">{p.category}</p>
             <h3>{p.title}</h3>
             <p>{p.hook}</p>
@@ -34,7 +40,7 @@ function Projects() {
                 </a>
               )}
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>
